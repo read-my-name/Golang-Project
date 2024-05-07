@@ -26,6 +26,7 @@ func main() {
     }
     fmt.Println("Connected to Redis:", pong)
 
+	// Define a struct.
 	type Person struct {
 		Name string `json:"name"`
 		Age int		`json:"age"`
@@ -69,6 +70,16 @@ func main() {
         log.Fatal(err)
 	}
 	fmt.Printf("Get value of key:, %s\n", val)
+
+	// Unmarshal the JSON string into a Person struct.
+	var person Person
+	if err := json.Unmarshal([]byte(val), &person); err != nil {
+		log.Fatal(err)
+	}
+
+	// Access the "occupation" field.
+	occupation := person.Occupation
+	fmt.Println("Occupation:", occupation)
 
     // Close the connection when you're done.
     defer client.Close()
