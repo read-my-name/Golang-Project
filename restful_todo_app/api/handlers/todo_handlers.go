@@ -3,7 +3,6 @@ package handlers
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -55,19 +54,14 @@ func (h *TodoHandler) AddTodo(c *gin.Context) {
 
 func (h *TodoHandler) UpdateTodo(c *gin.Context){
     idParam := c.Param("id")
-    id, err := strconv.Atoi(idParam)
-    if err != nil {
-        c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
-        return
-    }
-
+    
     var updatedTodo models.Todo
     if err := c.BindJSON(&updatedTodo); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
     }
 
-    if err := h.service.UpdateTodo(id, updatedTodo); err != nil {
+    if err := h.service.UpdateTodo(idParam, updatedTodo); err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}) 
         return
     }
@@ -76,14 +70,9 @@ func (h *TodoHandler) UpdateTodo(c *gin.Context){
 }
 
 func (h *TodoHandler) DeleteTodo(c *gin.Context) {
-    idParam := c.Param("id")
-    id, err := strconv.Atoi(idParam)
-    if err != nil {
-        c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
-        return
-    }    
+    idParam := c.Param("id")   
 
-    if err := h.service.DeleteTodo(id); err != nil {
+    if err := h.service.DeleteTodo(idParam); err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
         return
     }
