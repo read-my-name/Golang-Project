@@ -5,3 +5,4 @@ redis-with-go/go.sum
 email-verifier/go.mod
 mongodb-with-go/go.mod
 mongodb-with-go/go.sum
+restful_todo_app/cmd/main_old.go
