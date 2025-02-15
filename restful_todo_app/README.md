@@ -78,9 +78,6 @@ curl -X POST http://localhost:8080/todos \
 # Get high priority security todos
 curl "http://localhost:8080/todos?priority=high&label=security"
 
-# # Get this week's todos
-# curl http://localhost:8080/todos/period/week
-# ```
 
 ## 🏗 Project Structure
 
@@ -99,7 +96,7 @@ restful-todo-app/
 
 ## 🛠 Technologies Used
 
-- **Go** (Golang
+- **Go** (Golang)
 - **Gin** Web Framework
 - **UUID** for unique identifiers
 - **CSV** for persistent storage
@@ -116,26 +113,3 @@ restful-todo-app/
 - Worker pool pattern for async processing
 - Detailed request/response logging
 - Graceful shutdown handling
-
-<!-- ## 🔮 Future Enhancements
-
-- [ ] SQL/Redis database integration
-- [ ] User authentication (JWT/OAuth)
-- [ ] Web frontend (React/Vue)
-- [ ] Comprehensive test suite
-- [ ] Docker containerization
-- [ ] Rate limiting and API throttling -->
-
-## 🤝 Contributing
-
-Contributions welcome! Please follow the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
